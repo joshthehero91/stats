@@ -1,0 +1,67 @@
+Checking the current server configurations:
+Hostname:  host2.tonallytubular.com
+CentOS  7.2.1511
+cPanel:  11.60.0.3
+Apache  2.4.23
+
+--EasyApache 4 in use--
+Primary Handler: cgi
+MPM:  event
+PHP  5.6.26
+CPU(s):  2
+Total  Mem:  956MB
+
+Checking MySQL and current buffers:
+mysql  5.6.33
+performance-schema=0
+performance_schema=off
+
+key_buffer_size = 64M
+
+innodb_buffer_pool_size=64M
+
+Checking MySQL storage engines:
+ENGINE  DataMB  IndexMB  TotalMB  NumTables
+InnoDB  21.0    32.6     53.6     1015
+MEMORY  0.0     0.0      0.0      34
+MyISAM  0.8     0.2      1.0      47
+
+Checking various memory_limit settings:
+Current loaded php.ini file: /opt/cpanel/ea-php56/root/etc/php.ini
+memory_limit = 32M
+
+Limit in /opt/cpanel/ea-php55/root/etc/php.d/local.ini:
+memory_limit = 28M
+
+Limit in /opt/cpanel/ea-php56/root/etc/php.d/local.ini:
+memory_limit = 48M
+
+Limit in /opt/cpanel/ea-php70/root/etc/php.d/local.ini:
+memory_limit = 48M
+
+Do you want to see pre_virtualhost_global.conf?
+ (1) Yup
+ (2) No thanks
+1
+
+Contents of /usr/local/apache/conf/includes/pre_virtualhost_global.conf:
+KeepAlive On
+MaxKeepAliveRequests 150
+KeepAliveTimeout 2
+Timeout 30
+
+<IfModule prefork.c>
+    MaxClients 20
+</IfModule>
+<IfModule worker.c>
+    ServerLimit 16
+    StartServers 3
+    ThreadsPerChild 25
+    MaxClients 400
+</IfModule>
+<IfModule event.c>
+    ServerLimit 16
+    StartServers 3
+    ThreadsPerChild 25
+    MaxClients 400
+</IfModule>
